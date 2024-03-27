@@ -35,6 +35,7 @@ public class MedicoController {
 
     @GetMapping
     public ResponseEntity<Page<DadosListagemMedicosDTO>> listarMedicos(@PageableDefault(sort = {"nome"}) Pageable paginacao) {
+
         var page = repository.findAllByAtivoTrue(paginacao)
                 .map(DadosListagemMedicosDTO::new);
 
